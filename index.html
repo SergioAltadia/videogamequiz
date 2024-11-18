@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videogame Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Título Principal -->
+        <h1 class="titulo-principal">VIDEOGAME QUIZ</h1>
+        
+        <!-- Pantalla de Inicio -->
+        <div id="pantalla-inicio" class="pantalla">
+            <h1>¡Bienvenido al Quiz de Videojuegos!</h1>
+            <button id="btn-comenzar">Comenzar Juego</button>
+        </div>
+
+        <!-- Pantalla de Juego -->
+        <div id="pantalla-juego" class="pantalla" style="display: none;">
+            <div class="info-juego">
+                <div class="progreso">Pregunta: <span id="pregunta-actual">1</span>/10</div>
+                <div class="puntaje">Puntaje: <span id="puntaje">0</span></div>
+                <div id="temporizador">Tiempo: <span id="tiempo">30</span>s</div>
+            </div>
+            <div class="pregunta-container">
+                <div class="imagen-pregunta">
+                    <img id="imagen-actual" src="" alt="Imagen de la pregunta" style="display: none;">
+                </div>
+                <h2 id="pregunta">¿Pregunta aquí?</h2>
+                <div class="opciones" id="opciones">
+                    <!-- Las opciones se generarán dinámicamente -->
+                </div>
+                <div id="explicacion" class="explicacion" style="display: none;">
+                    <!-- La explicación se mostrará aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Resultados -->
+        <div id="pantalla-resultados" class="pantalla" style="display: none;">
+            <h2>¡Juego Terminado!</h2>
+            <div class="resultados">
+                <p>Tu puntaje final: <span id="puntaje-final">0</span></p>
+                <p>Preguntas correctas: <span id="correctas">0</span>/10</p>
+            </div>
+            <button id="btn-reiniciar">Jugar de Nuevo</button>
+        </div>
+    </div>
+    <script src="preguntas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
