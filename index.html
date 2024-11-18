@@ -3,51 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videogame Quiz</title>
+    <title>Trivia de Videojuegos 🎮</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Título Principal -->
-        <h1 class="titulo-principal">VIDEOGAME QUIZ</h1>
-        
-        <!-- Pantalla de Inicio -->
-        <div id="pantalla-inicio" class="pantalla">
-            <h1>¡Bienvenido al Quiz de Videojuegos!</h1>
-            <button id="btn-comenzar">Comenzar Juego</button>
-        </div>
-
-        <!-- Pantalla de Juego -->
-        <div id="pantalla-juego" class="pantalla" style="display: none;">
-            <div class="info-juego">
-                <div class="progreso">Pregunta: <span id="pregunta-actual">1</span>/10</div>
-                <div class="puntaje">Puntaje: <span id="puntaje">0</span></div>
-                <div id="temporizador">Tiempo: <span id="tiempo">30</span>s</div>
-            </div>
-            <div class="pregunta-container">
-                <div class="imagen-pregunta">
-                    <img id="imagen-actual" src="" alt="Imagen de la pregunta" style="display: none;">
+    <!-- Pantalla de Bienvenida -->
+    <div id="pantallaBienvenida" class="pantalla">
+        <div class="contenedor">
+            <h1>🎮 Trivia de Videojuegos 🎮</h1>
+            <div class="formulario-inicio">
+                <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" maxlength="20">
+                
+                <div class="selector-dificultad">
+                    <h3>Selecciona la dificultad:</h3>
+                    <div class="opciones-dificultad">
+                        <label class="dificultad-opcion">
+                            <input type="radio" name="dificultad" value="facil" checked>
+                            <span class="texto-dificultad">Fácil 😊 (30s)</span>
+                        </label>
+                        <label class="dificultad-opcion">
+                            <input type="radio" name="dificultad" value="medio">
+                            <span class="texto-dificultad">Medio 😐 (20s)</span>
+                        </label>
+                        <label class="dificultad-opcion">
+                            <input type="radio" name="dificultad" value="dificil">
+                            <span class="texto-dificultad">Difícil 😈 (10s)</span>
+                        </label>
+                    </div>
                 </div>
-                <h2 id="pregunta">¿Pregunta aquí?</h2>
-                <div class="opciones" id="opciones">
-                    <!-- Las opciones se generarán dinámicamente -->
-                </div>
-                <div id="explicacion" class="explicacion" style="display: none;">
-                    <!-- La explicación se mostrará aquí -->
-                </div>
+                
+                <button onclick="iniciarJuego()" class="btn-principal">¡Comenzar! 🚀</button>
             </div>
-        </div>
-
-        <!-- Pantalla de Resultados -->
-        <div id="pantalla-resultados" class="pantalla" style="display: none;">
-            <h2>¡Juego Terminado!</h2>
-            <div class="resultados">
-                <p>Tu puntaje final: <span id="puntaje-final">0</span></p>
-                <p>Preguntas correctas: <span id="correctas">0</span>/10</p>
-            </div>
-            <button id="btn-reiniciar">Jugar de Nuevo</button>
         </div>
     </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="pantallaJuego" class="pantalla" style="display: none;">
+        <div class="contenedor">
+            <div class="barra-superior">
+                <div class="info-jugador">
+                    <span id="nombreJugador"></span>
+                    <span class="separador">|</span>
+                    <span id="dificultadActual"></span>
+                </div>
+                <div class="info-juego">
+                    <span>Puntos: <span id="puntuacion">0</span></span>
+                    <span class="separador">|</span>
+                    <span id="progreso">Pregunta 1 de 10</span>
+                </div>
+            </div>
+
+            <div class="temporizador">
+                <div class="tiempo-texto">
+                    Tiempo: <span id="tiempo">30</span>s
+                </div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="contenedor-pregunta">
+                <img id="imagenPregunta" class="imagen-pregunta" src="" alt="Imagen de la pregunta">
+                <h2 id="pregunta"></h2>
+                <div id="opciones" class="opciones"></div>
+            </div>
+
+            <div class="controles">
+                <button onclick="mostrarPista()" class="btn-control">
+                    💡 Pista
+                </button>
+                <button onclick="saltarPregunta()" class="btn-control">
+                    ⏭️ Saltar
+                </button>
+            </div>
+
+            <div id="feedback" class="feedback" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Resultados -->
+    <div id="pantallaResultados" class="pantalla" style="display: none;">
+        <div class="contenedor">
+            <div id="resultadoFinal" class="resultado-final">
+                <!-- Contenido dinámico -->
+            </div>
+            
+            <div class="botones-finales">
+                <button onclick="location.reload()" class="btn-principal">
+                    🔄 Jugar de nuevo
+                </button>
+                <button onclick="compartirResultado()" class="btn-principal">
+                    📢 Compartir resultado
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="preguntas.js"></script>
     <script src="script.js"></script>
 </body>
